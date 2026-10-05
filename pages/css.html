@@ -1,0 +1,136 @@
+
+<div>
+<head>
+   <title>視覚で学ぶ！CSS入門ガイド</title>
+   <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>視覚で学ぶ！CSS入門ガイド</h1>
+    </header>
+
+    <div class="container">
+        
+        <h2>1. ファイル構成とCSSの読み込み</h2>
+        <div class="tag-section">
+            <h3>一般的なファイル構成</h3>
+            <p>CSSを適用するには、HTMLファイルとは別にCSSファイルを作成し、HTML内で読み込むのが最も一般的な方法です。</p>
+            
+            <div class="demo-box">
+                <div class="demo-label">フォルダ構成例</div>
+                <pre><span class="text">プロジェクトフォルダ/
+ ├── index.html
+ ├── css/
+ │    └── style.css
+ └── images/
+      └── logo.png</span></pre>
+            </div>
+
+            <p>HTMLの <code>&lt;head&gt;</code> 内で以下のように読み込みます。</p>
+            <pre><span class="text">&lt;link rel="stylesheet" href="</span><span class="val">css/style.css</span><span class="text">"&gt;</span></pre>
+        </div>
+
+        <h2>2. CSSの基本ルール（構文）</h2>
+        <div class="tag-section">
+            <h3>セレクタ・プロパティ・値</h3>
+            <p>CSSは「どこの」「何を」「どうする」という3つの要素で構成されます。</p>
+            
+            <ul class="description-list">
+                <li><strong>セレクタ:</strong> デザインを適用するHTMLタグやクラス名</li>
+                <li><strong>プロパティ:</strong> 変更したいデザインの種類</li>
+                <li><strong>値:</strong> どのように変更するか</li>
+            </ul>
+
+            <div class="demo-box">
+                <div class="demo-label">構文の例</div>
+                <pre><span class="tag">h1</span> <span class="text">{</span>
+    <span class="attr">color</span><span class="text">:</span> <span class="val">#2c3e50</span><span class="text">;</span>
+<span class="text">}</span></pre>
+            </div>
+        </div>
+
+        <!-- 追加したクラスの解説セクション -->
+        <h2>3. 特定の場所だけデザインを変える「クラス（class）」</h2>
+        <div class="tag-section">
+            <h3>class（クラス）とは？</h3>
+            <p>すべての <code>&lt;button&gt;</code> ではなく、「このボタンだけ赤くしたい！」という場合があります。そんな時にHTML側につける「名札」が <strong>class</strong> です。</p>
+            
+            <ul class="description-list">
+                <li><strong>HTML側:</strong> タグの中に <code>class="好きな名前"</code> を書きます。</li>
+                <li><strong>CSS側:</strong> 名前の先頭に必ず <strong>.（ドット）</strong> をつけて指定します。</li>
+                <li>同じページ内で、同じclass名を何度でも使い回すことができます。</li>
+            </ul>
+
+            <div class="demo-box">
+                <div class="demo-label">実行結果の比較</div>
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <button class="btn-normal">普通のボタン</button>
+                    <button class="btn-special">特別なボタン</button>
+                </div>
+            </div>
+
+            <p>【HTMLの書き方】</p>
+            <pre><span class="text">&lt;button&gt;普通のボタン&lt;/button&gt;</span>
+<span class="text">&lt;button </span><span class="attr">class</span><span class="text">="</span><span class="val">btn-special</span><span class="text">"&gt;特別なボタン&lt;/button&gt;</span></pre>
+
+            <p>【CSSの書き方】 ドットを忘れないように注意！</p>
+            <pre><span class="text">/* classを指定するときは先頭に「.」をつける */</span>
+<span class="tag">.btn-special</span> <span class="text">{</span>
+    <span class="attr">background-color</span><span class="text">:</span> <span class="val">#e74c3c</span><span class="text">;</span>
+    <span class="attr">color</span><span class="text">:</span> <span class="val">#ffffff</span><span class="text">;</span>
+<span class="text">}</span></pre>
+        </div>
+
+        <h2>4. レイアウトの要「ボックスモデル」</h2>
+        <div class="tag-section">
+            <h3>余白のルール</h3>
+            <p>Web上のすべての要素は、四角い「箱（ボックス）」として計算されます。</p>
+
+            <div class="demo-box">
+                <div class="demo-label">ボックスモデルの図解</div>
+                <div class="box-model-demo">
+                    <div class="margin-box">
+                        Margin（外側の余白）
+                        <div class="border-box">
+                            Border（境界線）
+                            <div class="padding-box">
+                                Padding（内側の余白）
+                                <div class="content-box">
+                                    Content（中身）
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <pre><span class="tag">.box</span> <span class="text">{</span>
+    <span class="attr">padding</span><span class="text">:</span> <span class="val">20px</span><span class="text">;</span>      <span class="text">/* 内側の余白 */</span>
+    <span class="attr">border</span><span class="text">:</span> <span class="val">4px solid #000</span><span class="text">;</span> <span class="text">/* 境界線 */</span>
+    <span class="attr">margin</span><span class="text">:</span> <span class="val">20px</span><span class="text">;</span>       <span class="text">/* 外側の余白 */</span>
+<span class="text">}</span></pre>
+        </div>
+
+        <h2>5. よく使うCSSコマンド集</h2>
+        <div class="tag-section">
+            <h3>Flexbox（横並びレイアウト）</h3>
+            <p>親要素のclassに <code>display: flex;</code> を指定すると、子要素が横並びになります。現代のWebレイアウトで最も使われる手法です。</p>
+            
+            <div class="demo-box">
+                <div class="demo-label">実行結果（justify-content: space-between;）</div>
+                <div class="flex-container-demo">
+                    <div class="flex-item">Item 1</div>
+                    <div class="flex-item">Item 2</div>
+                    <div class="flex-item">Item 3</div>
+                </div>
+            </div>
+
+            <pre><span class="tag">.flex-container</span> <span class="text">{</span>
+    <span class="attr">display</span><span class="text">:</span> <span class="val">flex</span><span class="text">;</span>
+    <span class="attr">justify-content</span><span class="text">:</span> <span class="val">space-between</span><span class="text">;</span>
+<span class="text">}</span></pre>
+        </div>
+    </div>
+</body>
+</div>

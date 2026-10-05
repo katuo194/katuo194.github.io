@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自己紹介サイト制作チュートリアル</title>
+    <!-- 分割したCSSファイルを読み込む -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>自己紹介サイト制作チュートリアル</h1>
+    <p>タスクが完了したら、右下のチェックボックスをクリックして次のステップへ進みましょう。</p>
+    <p>※前提条件としてVSコードのインストールとそのライブラリであるLive Serverのインストールが必要です。</p>
+
+    <div class="step-card active visible" id="step1">
+        <h2>Step 1: 開発環境の準備</h2>
+        <p>PC上に <code>my-website</code> というフォルダを作成してください。このフォルダの中で作業を行います。作成できたらVS Codeでそのフォルダを開きましょう。</p>
+        <div class="checkbox-area">
+            <label class="checkbox-label">
+                <input type="checkbox" class="task-check" data-next="step2">
+                準備完了！次へ
+            </label>
+        </div>
+    </div>
+
+    <div class="step-card" id="step2">
+        <h2>Step 2: HTMLで骨組みを作る</h2>
+        <p>フォルダ内に <code>index.html</code> というファイルを作成し、以下のコードを記述して保存してください。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;{名前}のポートフォリオ&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;自己紹介&lt;/h1&gt;
+    &lt;button id="alertButton"&gt;クリックしてね&lt;/button&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="checkbox-area">
+            <label class="checkbox-label">
+                <input type="checkbox" class="task-check" data-next="step3">
+                HTML作成完了！次へ
+            </label>
+        </div>
+    </div>
+
+    <div class="step-card" id="step3">
+        <h2>Step 3: CSSでデザインを整える</h2>
+        <p>次に <code>style.css</code> というファイルを作成し、以下のコードを記述して保存します。</p>
+<pre><code>body {
+    text-align: center;
+    font-family: sans-serif;
+    background-color: #f0f8ff;
+    padding: 50px;
+}
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}</code></pre>
+        <div class="checkbox-area">
+            <label class="checkbox-label">
+                <input type="checkbox" class="task-check" data-next="step4">
+                CSS作成完了！次へ
+            </label>
+        </div>
+    </div>
+
+    <div class="step-card" id="step4">
+        <h2>Step 4: JavaScriptで動きをつける</h2>
+        <p>最後に <code>script.js</code> というファイルを作成し、以下のコードを記述して保存します。</p>
+<pre><code>document.getElementById('alertButton').addEventListener('click', () => {
+    alert('こんにちは！プログラミングの世界へようこそ！');
+});</code></pre>
+        <div class="checkbox-area">
+            <label class="checkbox-label">
+                <input type="checkbox" class="task-check" data-next="step5">
+                JS作成完了！次へ
+            </label>
+        </div>
+    </div>
+
+    <div class="step-card" id="step5">
+        <h2>Step 5: ブラウザで動作確認</h2>
+        <p>保存した <code>index.html</code> をVS CodeのLive Server機能を使ってブラウザで開いてみましょう。ボタンを押してメッセージが出れば完成です！</p>
+        <div class="checkbox-area">
+            <label class="checkbox-label">
+                <input type="checkbox" class="task-check" data-next="finish">
+                すべて完了！
+            </label>
+        </div>
+    </div>
+
+    <div id="completionMessage">
+        🎉 お疲れ様でした！初めてのWebサイト構築成功です！ 🎉
+    </div>
+
+    <script>
+        // すべてのチェックボックスを取得
+        const checkboxes = document.querySelectorAll('.task-check');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                // チェックが入った時だけ処理をする
+                if (this.checked) {
+                    // チェックを外せないように無効化（一本道で進ませるため）
+                    this.disabled = true;
+
+                    const nextStepId = this.getAttribute('data-next');
+
+                    if (nextStepId === 'finish') {
+                        // 最後まで終わった場合の処理
+                        const message = document.getElementById('completionMessage');
+                        message.style.display = 'block';
+                    } else {
+                        // 次のステップを表示する処理
+                        const nextStep = document.getElementById(nextStepId);
+                        if (nextStep) {
+                            // display: block を適用
+                            nextStep.classList.add('active');
+                            
+                            // 少し遅らせて透明度(opacity)を上げることでフワッとしたアニメーションを実現
+                            setTimeout(() => {
+                                nextStep.classList.add('visible');
+                                // 次のステップが表示されたら、そこへスムーズにスクロールさせる
+                                nextStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }, 50);
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

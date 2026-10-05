@@ -1,0 +1,157 @@
+
+<div>
+    <link rel="stylesheet" href="../style/style.css">
+
+
+    <header>
+        <h1>HTMLタグ・基礎リファレンス</h1>
+        <p>〜よく使う基本コマンドを図解とコードで学ぶ〜</p>
+    </header>
+
+    <div class="container">
+        
+        <h2>HTMLの基本構造（ひな形）</h2>
+        <p>ウェブページを作成する際、HTMLファイルには必ず記述しなければならない決まった「枠組み（ひな形）」があります。それぞれの行が持つ意味を見ていきましょう。</p>
+
+        <div class="tag-section">
+            <pre style="margin-bottom: 15px;"><code><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang=</span><span class="val">"ja"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">charset=</span><span class="val">"UTF-8"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span><span class="text">ページのタイトル</span><span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+    <span class="text">ここに画面に表示したい内容（見出しや画像など）を書きます。</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
+
+            <ul class="description-list">
+                <li><strong>&lt;!DOCTYPE html&gt;</strong>：「この文書は最新のHTML（HTML5）で書かれています」という、ブラウザに対する宣言です。</li>
+                <li><strong>&lt;html&gt;</strong>：HTML文書の始まりと終わりを示します。<code>lang="ja"</code> は「日本語で書かれたページである」ことを指定しています。</li>
+                <li><strong>&lt;head&gt;</strong>：文字コード（文字化けを防ぐ <code>meta charset="UTF-8"</code>）やタイトルなど、<strong>画面には直接表示されない裏側の設定</strong>を書く場所です。</li>
+                <li><strong>&lt;body&gt;</strong>：実際に<strong>ブラウザの画面に表示される中身</strong>（テキスト、画像、リンクなど）は、すべてこのタグの中に書きます。</li>
+            </ul>
+        </div>
+
+        <h2>主要なHTMLタグ一覧</h2>
+        <p>ここからは、<code>&lt;body&gt;</code> の中に書いていく具体的なタグ（コマンド）を一つずつ見ていきましょう。</p>
+
+        <!-- タグ解説：見出し -->
+        <div class="tag-section">
+            <h3>&lt;h1&gt; 〜 &lt;h6&gt;：見出し（Heading）</h3>
+            <p>ページのタイトルや、各セクションの見出しを作るタグです。<code>h1</code>が一番大きく重要な見出しで、<code>h6</code>まで存在します。本の目次を作るように、順番に使うのがルールです。</p>
+            
+            <div class="demo-box">
+                <div class="demo-label">▼ ブラウザでの表示結果</div>
+                <h1 style="margin:0;">これはh1の大見出しです</h1>
+                <h3 style="margin:0;">これはh3の小見出しです</h3>
+            </div>
+
+            <pre><code><span class="tag">&lt;h1&gt;</span><span class="text">これはh1の大見出しです</span><span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;h3&gt;</span><span class="text">これはh3の小見出しです</span><span class="tag">&lt;/h3&gt;</span></code></pre>
+        </div>
+
+        <!-- タグ解説：段落 -->
+        <div class="tag-section">
+            <h3>&lt;p&gt;：段落（Paragraph）</h3>
+            <p>通常の文章（テキスト）を書くためのタグです。このタグで囲んだ文章はひとつの「段落」とみなされ、前後に自動的に少し余白が空きます。</p>
+            
+            <div class="demo-box">
+                <div class="demo-label">▼ ブラウザでの表示結果</div>
+                <p style="margin:0 0 10px 0;">こんにちは。プログラミングの学習を始めました。</p>
+                <p style="margin:0;">ここは新しい段落になります。</p>
+            </div>
+
+            <pre><code><span class="tag">&lt;p&gt;</span><span class="text">こんにちは。プログラミングの学習を始めました。</span><span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;p&gt;</span><span class="text">ここは新しい段落になります。</span><span class="tag">&lt;/p&gt;</span></code></pre>
+        </div>
+
+        <!-- タグ解説：リンク -->
+        <div class="tag-section">
+            <h3>&lt;a&gt;：リンク（Anchor）</h3>
+            <p>他のウェブページへ移動するためのリンクを作ります。<code>href</code>（エイチレフ）という<strong>属性</strong>を使って、飛び先のURLを指定します。</p>
+            
+            <div class="demo-box">
+                <div class="demo-label">▼ ブラウザでの表示結果</div>
+                <a href="#">ここをクリックすると移動します</a>
+            </div>
+
+            <pre><code><span class="tag">&lt;a</span> <span class="attr">href=</span><span class="val">"https://google.com"</span><span class="tag">&gt;</span><span class="text">ここをクリックすると移動します</span><span class="tag">&lt;/a&gt;</span></code></pre>
+        </div>
+
+        <!-- タグ解説：画像 -->
+        <div class="tag-section">
+            <h3>&lt;img&gt;：画像（Image）</h3>
+            <p>画面に画像を表示させるタグです。このタグには<strong>終了タグがない</strong>のが特徴です。<code>src</code>（ソース）属性で画像の場所を指定し、<code>alt</code>（オルト）属性で画像が表示されなかった時の代替テキストを指定します。</p>
+            
+            <div class="demo-box">
+                <div class="demo-label">▼ ブラウザでの表示結果</div>
+                <img src="cat_kotatsu_neko.png" alt="猫の画像">
+            </div>
+
+            <pre><code><span class="tag">&lt;img</span> <span class="attr">src=</span><span class="val">"photo.jpg"</span> <span class="attr">alt=</span><span class="val">"サンプルの画像"</span><span class="tag">&gt;</span></code></pre>
+        </div>
+
+        <!-- タグ解説：順序なしリスト -->
+        <div class="tag-section">
+            <h3>&lt;ul&gt; と &lt;li&gt;：箇条書きリスト（Unordered List）</h3>
+            <p>順序のない箇条書き（・で表示されるリスト）を作ります。リスト全体を<code>ul</code>で囲み、それぞれの項目を<code>li</code>（List Item）で囲みます。</p>
+            
+            <div class="demo-box">
+                <div class="demo-label">▼ ブラウザでの表示結果</div>
+                <ul style="margin:0;">
+                    <li>りんご</li>
+                    <li>みかん</li>
+                    <li>ぶどう</li>
+                </ul>
+            </div>
+
+            <pre><code><span class="tag">&lt;ul&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">りんご</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">みかん</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">ぶどう</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></code></pre>
+        </div>
+
+        <!-- タグ解説：順序ありリスト -->
+        <div class="tag-section">
+            <h3>&lt;ol&gt; と &lt;li&gt;：番号付きリスト（Ordered List）</h3>
+            <p>順序がある箇条書き（1, 2, 3...と番号が振られるリスト）を作ります。手順やランキングを説明する際によく使われます。全体を<code>ol</code>で囲み、項目は<code>ul</code>の時と同じように<code>li</code>を使います。</p>
+            
+            <div class="demo-box">
+                <div class="demo-label">▼ ブラウザでの表示結果</div>
+                <ol style="margin:0;">
+                    <li>HTMLの基礎を学ぶ</li>
+                    <li>CSSで装飾する</li>
+                    <li>ウェブサイトが完成！</li>
+                </ol>
+            </div>
+
+            <pre><code><span class="tag">&lt;ol&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">HTMLの基礎を学ぶ</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">CSSで装飾する</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">ウェブサイトが完成！</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span></code></pre>
+        </div>
+
+        <!-- タグ解説：グループ化 (div) -->
+        <div class="tag-section">
+            <h3>&lt;div&gt;：グループ化（Division）</h3>
+            <p>複数のタグをひとまとめにする「透明な箱」のようなタグです。<code>div</code>自体にはテキストを太くしたりするような見た目の変化はありませんが、<strong>デザイン（CSS）を適用したり、レイアウトを組んだりする際になくてはならない重要なタグ</strong>です。</p>
+            
+            <div class="demo-box">
+                <div class="demo-label">▼ ブラウザでの表示結果（※分かりやすくdivの箱に色をつけています）</div>
+                <div style="background-color: #e8f4f8; padding: 15px; border: 2px solid #3498db; border-radius: 5px;">
+                    <h4 style="margin-top:0; color: #2980b9;">グループのタイトル</h4>
+                    <p style="margin-bottom:0;">この見出しと段落は、ひとつのdivタグで囲まれてグループ化されています。</p>
+                </div>
+            </div>
+
+            <pre><code><span class="tag">&lt;div&gt;</span>
+    <span class="tag">&lt;h4&gt;</span><span class="text">グループのタイトル</span><span class="tag">&lt;/h4&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">この見出しと段落は、ひとつのdivタグで囲まれてグループ化されています。</span><span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+        </div>
+
+    </div>
+</div>
